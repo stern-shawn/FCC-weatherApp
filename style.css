@@ -1,0 +1,54 @@
+body {
+  font-family: 'Abel', sans-serif;
+  background: #2AC7AA;
+}
+
+#weatherBox {
+  background: #FFF;
+  width: 500px;
+  border-radius: 10px;
+  padding: 50px;
+  margin: 10% auto auto auto;
+}
+
+.nice {
+  font-size: 2em;
+  text-shadow: 1px 1px 1px #333;
+}
+
+/* .well {
+  background: #444;
+} */
+
+/* Scale the quote box and buttons once the screen gets smaller than the set size of 500px (520 for a smoother transition)*/
+@media only screen and (max-width: 520px) {
+  #weatherBox{
+    width: 95%;
+  }
+
+  .scaleBtn {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Generic Footer CSS for my "brand" */
+.contactList {
+  list-style: none;
+  padding: 0px;
+}
+
+.contactList li {
+  margin: 10px;
+  display: inline-block;
+}
+
+.contactList li i {
+  padding: 5px;
+  color: #333;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.fa-facebook:hover, .fa-linkedin:hover, .fa-fire:hover, .fa-github:hover, .fa-instagram:hover {
+    color: #F78536;
+}
