@@ -73,8 +73,8 @@ function getWeather() {
 
     // Insert the current city, temperature, and weather status icons
     $("#city").html(weather.name);
-    $("#temperature").html(tempF + " " + unitLabel);
-    $("#weatherIcon").html("<i class='wi wi-owm-" + weather.weather[0].id + " fa-5x'></i>");
+    $("#temperature").hide().html(tempF + "<sup>o</sup> " + unitLabel).fadeIn();
+    $("#weatherIcon").hide().html("<i class='wi wi-owm-" + weather.weather[0].id + " fa-5x'></i>").fadeIn();
   }, "jsonp");
 }
 
@@ -82,12 +82,13 @@ function getWeather() {
 function swapUnits() {
   if (unitLabel === 'F') {
     unitLabel = 'C';
-    $("#temperature").html(tempC + " " + unitLabel);
+    $("#temperature").hide().html(tempC + "<sup>o</sup> " + unitLabel).fadeIn();
   } else {
     unitLabel = 'F';
-    $("#temperature").html(tempF + " " + unitLabel);
+    $("#temperature").hide().html(tempF + "<sup>o</sup> " + unitLabel).fadeIn();
   }
 }
+
 
 // Execute upon full page load
 $(document).ready(function() {

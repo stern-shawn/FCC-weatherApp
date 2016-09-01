@@ -1,43 +1,18 @@
 body {
   font-family: 'Abel', sans-serif;
-  background: #2AC7AA;
-}
-/*
-h1 span:after {
-  display: inline;
-}*/
-
-#weatherBox {
-  background: #FFF;
-  width: 500px;
-  border-radius: 10px;
-  padding: 50px;
-  margin: 10% auto auto auto;
+  background: #CCC;
 }
 
-.nice {
-  font-size: 2em;
-  text-shadow: 1px 1px 1px #333;
+.weatherBox {
+  margin: 100px auto;
 }
 
 #buttons {
   margin: 10px 0px;
 }
 
-/* .well {
-  background: #444;
-} */
-
-/* Scale the quote box and buttons once the screen gets smaller than the set size of 500px (520 for a smoother transition)*/
-@media only screen and (max-width: 520px) {
-  #weatherBox{
-    width: 95%;
-  }
-
-  .scaleBtn {
-    width: 100%;
-    display: block;
-  }
+#weatherIcon {
+  color: #FF5800;
 }
 
 /* Generic Footer CSS for my "brand" */
@@ -58,5 +33,5 @@ h1 span:after {
 }
 
 .fa-facebook:hover, .fa-linkedin:hover, .fa-fire:hover, .fa-github:hover, .fa-instagram:hover {
-    color: #F78536;
+  color: #FF5800;
 }

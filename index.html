@@ -11,57 +11,42 @@
 <script type="text/javascript" src="./script.js"></script>
 
 <head>
-  <title>Weather App by Shawn Stern</title>
+  <title>Current Weather App by Shawn Stern</title>
 </head>
 
 <body>
-  <section class="container text-center">
+  <section class="container text-center weatherBox">
     <div class="row">
-      <p>Weather data provided by <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API.</a></p>
+      <p>IP Address-based location data provided by <a href="http://ipinfo.io" target="_blank">ipinfo.io</a>.</p>
+      <p>Weather data provided by <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a>.</p>
       <h1>The weather in <span id="city"></span> is currently: <span id=weatherDescription></span></h1>
       <h2><span id="temperature"></span></h2>
       <p id="weatherIcon"></p>
     </div>
     <div class="row" id="buttons">
-      <button class="btn btn-primary scaleBtn" id="switchUnits" onclick="swapUnits()">Swap Units (F/C)</button>
+      <button class="btn scaleBtn" id="switchUnits" onclick="swapUnits()">Swap Units (F/C)</button>
     </div>
-    <!-- <div id="weatherBox" class="container">
-      <div class="row text-center">
-        <h1>Current Weather</h1>
-        <p>Weather state provided by <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API.</a></p>
-      </div>
-      <div class="row text-center well nice"> -->
-        <!-- Span for jquery to target -->
-        <!-- <span id="city"></span>
-        <span id="temperature"></span>
-        <span id="weather-state"></span>
-      </div>
-      <div class="buttons row text-center">
-        <button class="btn btn-primary scaleBtn" id="switchUnits" onclick="swapUnits()">Swap Units (F/C)</button> -->
-        <!-- <button class="btn btn-info scaleBtn" id="refresh" onclick="getWeather()">Refresh!</button> -->
-      <!-- </div>
-    </div> -->
   </section>
 
   <!-- CONTACT INFO SECTION -->
-    <section id="contact" class="container text-center" style="margin: 50px auto auto auto;">
-      <a name="contact" class="anchor "></a>
+  <section id="contact" class="container text-center" style="margin: 50px auto auto auto;">
+    <a name="contact" class="anchor"></a>
+    <div>
+      <h3>Contact Me</h3>
+      <ul class="contactList">
+        <li><a href="https://www.linkedin.com/in/shawn-stern-48496747" target='_blank'><i class="fa fa-2x fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a href="https://github.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-github" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.freecodecamp.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-fire" aria-hidden="true"></i></a></li>
+      </ul>
       <div>
-        <h3>Contact Me</h3>
-        <ul class="contactList ">
-          <li><a href="https://www.linkedin.com/in/shawn-stern-48496747 " target='_blank'><i class="fa fa-2x fa-linkedin " aria-hidden="true "></i></a></li>
-          <li><a href="https://github.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-github " aria-hidden="true "></i></a></li>
-          <li><a href="https://www.freecodecamp.com/stern-shawn" target='_blank'><i class="fa fa-2x fa-fire " aria-hidden="true "></i></a></li>
-        </ul>
-        <div>
-    </section>
+  </section>
 
-    <!-- FOOTER/COPYRIGHT SECTION -->
-    <footer id="copyright" class="container ">
-      <div class="row text-center ">
-        <p>© Copyright Shawn Stern 2016</p>
-      </div>
-    </footer>
+  <!-- FOOTER/COPYRIGHT SECTION -->
+  <footer id="copyright" class="container">
+    <div class="row text-center">
+      <p>© Copyright Shawn Stern 2016</p>
+    </div>
+  </footer>
 
 </body>
 
