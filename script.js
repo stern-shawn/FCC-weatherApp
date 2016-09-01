@@ -3,6 +3,8 @@ var unitLabel = 'F';
 var city = '';
 var latitude = 0;
 var longitude = 0;
+var tempF = 0;
+var tempC = 0;
 
 // // Set latitude and logitude if successful
 // function success(position) {
@@ -43,82 +45,51 @@ function getLocation() {
   // if (navigator.geolocation) {
   //   navigator.geolocation.getCurrentPosition(success, error, options);
   // }
-  // Alternate location API since HTTPS is necessary for geolocation to work, and https seems to break the other functionality of codepen so yaaaaayy...
-  $.get("http://ipinfo.io", function(location) {
-    console.log(location);
 
+  // Alternate location API since HTTPS is necessary for geolocation to work, and https seems to break the other functionality of codepen so yaaaaayy...
+  var locationAPI = "http://ipinfo.io";
+  $.get(locationAPI, function(location) {
+    // .loc is comma separated string, need to split to get lat/long separately
     latitude = location.loc.split(",")[0];
     longitude = location.loc.split(",")[1];
 
-    // $("#weather-state").append("<p>Lat: " + latitude + "</p><p>Long: " + longitude + "</p>");
-
-    city = location.city + ", " + location.region + ", " + location.country;
-
-    $("#city").html("<p>" + city + "</p>");
-
     // Nest function here to avoid async issues
     getWeather();
-
-  }, "jsonp");
+  }, "jsonp"); // Set format to jsonp so .split will work
 }
 
 // Invoke to get weather state (rainy, sunny, cloudy, etc) and termperature at the current location
 function getWeather() {
-  var jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=" + units + "&appid=d63b7095e1842b4853e6cb04f0b02e41";
-  console.log(jsonUrl);
+  var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=" + units + "&appid=d63b7095e1842b4853e6cb04f0b02e41";
+
   // Query OpenWeatherMap API for json object
-  $.getJSON(jsonUrl, function(weather) {
-    console.log(weather);
+  $.getJSON(weatherAPI, function(weather) {
+    // Log weather object to determine what object keys to reference...
+    // console.log(weather);
 
-    // Set Temperature
-    currentTemperature = Math.round(weather.main.temp);
+    // Set Temperature, default setup is to query in F. Store C for toggling
+    tempF = Math.round(weather.main.temp);
+    tempC = Math.round((tempF - 32) * (5/9));
 
-    if (units === 'imperial') {
-      unitLabel = 'F';
-    } else {
-      unitLabel = 'C';
-    }
-
-    $("#temperature").html("<p>" + currentTemperature + " " + unitLabel + "</p>");
-
-    // Set Weather Icon
-    $("#weather-state").html("<img src='http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png'>");
-  });
+    // Insert the current city, temperature, and weather status icons
+    $("#city").html(weather.name);
+    $("#temperature").html(tempF + " " + unitLabel);
+    $("#weatherIcon").html("<i class='wi wi-owm-" + weather.weather[0].id + " fa-5x'></i>");
+  }, "jsonp");
 }
 
-// Function to swap temperature units between Fahrenheit and Celsius
+// Function to swap temperature display between Fahrenheit and Celsius
 function swapUnits() {
   if (unitLabel === 'F') {
     unitLabel = 'C';
-    units = 'metric';
-    currentTemperature = Math.round((currentTemperature - 32) * (5/9));
+    $("#temperature").html(tempC + " " + unitLabel);
   } else {
     unitLabel = 'F';
-    units = 'imperial'
-    currentTemperature = Math.round((currentTemperature * (9/5)) + 32);
+    $("#temperature").html(tempF + " " + unitLabel);
   }
-
-  $("#temperature").html("<p>" + currentTemperature + " " + unitLabel + "</p>");
 }
 
 // Execute upon full page load
 $(document).ready(function() {
   getLocation();
-  // getWeather();
 });
-
-// Execute if button is pressed and user wants to view current temperature in different units
-// $('#switchUnits').on('click', function() {
-//   if (unitLabel === 'F') {
-//     unitLabel = 'C';
-//     currentTemperature = Math.round((currentTemperature - 32) * (5/9));
-//   } else {
-//     unitLabel = 'F';
-//     currentTemperature = Math.round((currentTemperature * (9/5)) + 32);
-//   }
-
-//   $("#temperature").html("<p>" + currentTemperature + " " + unitLabel + "</p>");
-// });
-
-// Execute if button is pressed and user wants to refresh current weather data
-// $('#refresh').on('click', getWeather());

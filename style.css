@@ -2,6 +2,10 @@ body {
   font-family: 'Abel', sans-serif;
   background: #2AC7AA;
 }
+/*
+h1 span:after {
+  display: inline;
+}*/
 
 #weatherBox {
   background: #FFF;
@@ -14,6 +18,10 @@ body {
 .nice {
   font-size: 2em;
   text-shadow: 1px 1px 1px #333;
+}
+
+#buttons {
+  margin: 10px 0px;
 }
 
 /* .well {
